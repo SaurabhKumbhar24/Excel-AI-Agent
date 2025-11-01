@@ -21,25 +21,25 @@ class ExcelInterpreter:
             params['values'] = [{"field": params.get('rows', [''])[0], "function": "count"}]
         
         office_js_code = f"""
-    await Excel.run(async (context) => {{
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
-        const rangeToAnalyze = sheet.getUsedRange();
-        
-        // Create pivot table
-        const pivotTable = sheet.pivotTables.add(
-            "AIPivotTable_" + Date.now(),
-            rangeToAnalyze,
-            sheet.getRange("A1")
-        );
-        
-        {self._generate_pivot_fields_code(params.get('rows', []), 'row', 'pivotTable')}
-        {self._generate_pivot_fields_code(params.get('columns', []), 'column', 'pivotTable')}
-        {self._generate_pivot_fields_code(params.get('filters', []), 'filter', 'pivotTable')}
-        {self._generate_pivot_values_code(params.get('values', []), 'pivotTable')}
-        
-        await context.sync();
-    }});
-    """
+            await Excel.run(async (context) => {{
+                const sheet = context.workbook.worksheets.getActiveWorksheet();
+                const rangeToAnalyze = sheet.getUsedRange();
+                
+                // Create pivot table
+                const pivotTable = sheet.pivotTables.add(
+                    "AIPivotTable_" + Date.now(),
+                    rangeToAnalyze,
+                    sheet.getRange("A1")
+                );
+                
+                {self._generate_pivot_fields_code(params.get('rows', []), 'row', 'pivotTable')}
+                {self._generate_pivot_fields_code(params.get('columns', []), 'column', 'pivotTable')}
+                {self._generate_pivot_fields_code(params.get('filters', []), 'filter', 'pivotTable')}
+                {self._generate_pivot_values_code(params.get('values', []), 'pivotTable')}
+                
+                await context.sync();
+            }});
+            """
         
         return {
             "action": "pivot_table",
