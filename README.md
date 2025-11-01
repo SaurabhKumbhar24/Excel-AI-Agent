@@ -2,8 +2,6 @@
 
 An intelligent Excel add-in that brings the power of AI to your spreadsheets. Interact with Excel using natural language and let AI handle complex formulas, pivot tables, charts, and data manipulation tasks.
 
-![Excel AI Agent Demo](./Excel%20AI%20Agent%20-%20Made%20with%20Clipchamp.mp4)
-
 ## 🌟 Features
 
 - **Natural Language Processing**: Ask questions in plain English like "create a formula to sum A1 to A10" or "make a pivot table showing sales by region"
